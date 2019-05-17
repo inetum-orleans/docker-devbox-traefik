@@ -1,0 +1,22 @@
+#debug=true
+
+defaultEntryPoints = ["http", "https"]
+
+[api]
+
+[docker]
+domain = "test"
+exposedByDefault = false
+network = "reverse-proxy"
+
+[file]
+  directory = "/config/"
+  watch = true
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+    sniStrict = true

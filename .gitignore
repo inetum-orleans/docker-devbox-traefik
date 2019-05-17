@@ -1,0 +1,11 @@
+/docker-compose.override.yml
+/.docker/.ca-certificates
+/.docker-compose.env
+/.docker/*/Dockerfile
+/.init/
+/.bash_enter.env
+/.bin/jq
+/.bin/cfssl-cli
+/.bin/mkcert
+/.traefik/\[domain\].ssl.toml
+/.certs
