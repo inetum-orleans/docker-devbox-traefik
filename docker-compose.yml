@@ -19,6 +19,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${COMPOSE_PROJECT_DIR}/.docker/.ca-certificates:/ca-certs
       - ${COMPOSE_PROJECT_DIR}/traefik.toml:/traefik.toml
+      - ${COMPOSE_PROJECT_DIR}/acme.json:/acme.json
       - ${COMPOSE_PROJECT_DIR}/config:/config
       - ${DOCKER_DEVBOX_CERTS_PATH}:/certs
     labels:

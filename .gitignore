@@ -2,10 +2,13 @@
 /.docker/.ca-certificates
 /.docker-compose.env
 /.docker/*/Dockerfile
+/.docker/fixuid.tar.gz
 /.init/
 /.bash_enter.env
 /.bin/jq
 /.bin/cfssl-cli
 /.bin/mkcert
 /.traefik/*.ssl.toml
+/traefik.toml
 /.certs
+/acme.json

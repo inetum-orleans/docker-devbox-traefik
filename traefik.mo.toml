@@ -22,7 +22,7 @@ network = "reverse-proxy"
     sniStrict = true
 
 [acme]
-email = ""
+email = "{{DOCKER_DEVBOX_ACME_EMAIL}}"
 storage = "acme.json"
 onHostRule = true
 entryPoint = "https"
