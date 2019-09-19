@@ -3,7 +3,7 @@ version: '2.2'
 services:
   traefik:
     container_name: traefik
-    image: traefik
+    image: traefik:maroilles
     environment:
       - 'VIRTUAL_HOST=${DOCKER_DEVBOX_DOMAIN_PREFIX}.${DOCKER_DEVBOX_DOMAIN}'
       - 'VIRTUAL_PORT=8080'
