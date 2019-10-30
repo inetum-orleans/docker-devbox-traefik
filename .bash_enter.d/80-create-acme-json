@@ -1,6 +1,0 @@
-#/usr/bin/env bash
-
-if [[ ! -e "${DOCKER_DEVBOX_DIR}/acme.json" ]]; then
-  touch "${DOCKER_DEVBOX_DIR}/acme.json"
-  chmod go-rwx "${DOCKER_DEVBOX_DIR}/acme.json"
-fi
