@@ -1,12 +1,8 @@
-version: '2.2'
-
+version: '3.7'
 services:
   traefik:
     container_name: traefik
     image: traefik:maroilles
-    environment:
-      - 'VIRTUAL_HOST=${DOCKER_DEVBOX_DOMAIN_PREFIX}.${DOCKER_DEVBOX_DOMAIN}'
-      - 'VIRTUAL_PORT=8080'
     ports:
       - "80:80"
       - "443:443"
@@ -21,10 +17,6 @@ services:
       - ${COMPOSE_PROJECT_DIR}/acme.json:/acme.json
       - ${COMPOSE_PROJECT_DIR}/config:/config
       - ${DOCKER_DEVBOX_CERTS_PATH}:/certs
-    labels:
-      - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:${DOCKER_DEVBOX_DOMAIN_PREFIX}.${DOCKER_DEVBOX_DOMAIN}"
-      - "traefik.port=8080"
 networks:
   reverse-proxy:
     external: true
