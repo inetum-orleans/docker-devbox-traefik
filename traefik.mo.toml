@@ -1,15 +1,19 @@
-debug=true
-
 defaultEntryPoints = ["http", "https"]
+
+[global]
+  checkNewVersion = false
+  sendAnonymousUsage = false
+
+[log]
+  level = "DEBUG"
 
 [api]
 
-[docker]
-domain = "test"
-exposedByDefault = false
-network = "reverse-proxy"
+[providers.docker]
+  exposedByDefault = false
+  network = "reverse-proxy"
 
-[file]
+[providers.file]
   directory = "/config/"
   watch = true
 
@@ -18,13 +22,13 @@ network = "reverse-proxy"
   address = ":80"
   [entryPoints.https]
   address = ":443"
-    [entryPoints.https.tls]
+
+[tls.options]
+  [tls.options.default]
     sniStrict = true
 
-[acme]
-email = "{{DOCKER_DEVBOX_ACME_EMAIL}}"
-storage = "acme.json"
-onHostRule = true
-entryPoint = "https"
-  [acme.httpChallenge]
-    entryPoint = "http"
+[certificatesResolvers.letsencrypt.acme]
+  email = "{{DOCKER_DEVBOX_ACME_EMAIL}}"
+  storage = "acme.json"
+  [certificatesResolvers.letsencrypt.acme.httpChallenge]
+    entryPoint = "https"

@@ -2,7 +2,7 @@ version: '3.7'
 services:
   traefik:
     container_name: traefik
-    image: traefik:maroilles
+    image: traefik:montdor
     ports:
       - "80:80"
       - "443:443"
@@ -10,6 +10,13 @@ services:
       - default
       - reverse-proxy
     restart: '${DOCKER_DEVBOX_RESTART_POLICY}'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.traefik-dashboard.rule=Host(`${DOCKER_DEVBOX_DOMAIN_PREFIX}.${DOCKER_DEVBOX_DOMAIN}`)'
+      - 'traefik.http.routers.traefik-dashboard.service=api@internal'
+      - 'traefik.http.routers.traefik-dashboard-tls.rule=Host(`${DOCKER_DEVBOX_DOMAIN_PREFIX}.${DOCKER_DEVBOX_DOMAIN}`)'
+      - 'traefik.http.routers.traefik-dashboard-tls.service=api@internal'
+      - 'traefik.http.routers.traefik-dashboard-tls.tls=true'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${COMPOSE_PROJECT_DIR}/.docker/.ca-certificates:/ca-certs
