@@ -4,8 +4,8 @@ defaultEntryPoints = ["http", "https"]
   checkNewVersion = false
   sendAnonymousUsage = false
 
-[log]
-  level = "DEBUG"
+#[log]
+#  level = "DEBUG"
 
 [api]
 
