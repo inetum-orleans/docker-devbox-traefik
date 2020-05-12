@@ -28,7 +28,7 @@ defaultEntryPoints = ["http", "https"]
     sniStrict = true
 
 [certificatesResolvers.letsencrypt.acme]
-  email = "{{DOCKER_DEVBOX_ACME_EMAIL}}"
+  email = "{{project.acme_email}}"
   storage = "acme.json"
   # caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
   [certificatesResolvers.letsencrypt.acme.httpChallenge]
