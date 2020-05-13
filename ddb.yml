@@ -2,6 +2,7 @@ smartcd:
   disabled: true
 docker:
   port_prefix: 426
+  restart_policy: unless-stopped
 permissions:
   specs:
     acme.json: '600'
