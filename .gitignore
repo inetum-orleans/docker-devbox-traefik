@@ -4,4 +4,5 @@ traefik.toml
 docker-compose.yml
 .certs/*.key
 .certs/*.crt
+*ddb.local.*
 ###< gfi-centre-ouest/docker-devbox ###
