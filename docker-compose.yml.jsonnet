@@ -9,7 +9,7 @@ local domain = std.join('.', [domain_sub, domain_ext]);
 
 ddb.Compose() {
   services: {
-      traefik: ddb.Image("traefik:2.5") + {
+      traefik: ddb.Image("traefik:2.11") + {
          container_name: "traefik",
          ports+: [
             "80:80",
