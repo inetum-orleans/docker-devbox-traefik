@@ -9,7 +9,7 @@ local domain = std.join('.', [domain_sub, domain_ext]);
 
 ddb.Compose() {
   services: {
-      traefik: ddb.Image("traefik:2.11") + {
+      traefik: ddb.Image("traefik:3.3") + {
          container_name: "traefik",
          ports+: [
             "80:80",
@@ -23,14 +23,14 @@ ddb.Compose() {
             "traefik.enable": true,
             "traefik.http.routers.traefik-dashboard.rule": "Host(`" + domain + "`)",
             "traefik.http.routers.traefik-dashboard.service": "api@internal",
-            "traefik.http.routers.traefik-dashboard-localhost.rule": "Host(`localhost`, `127.0.0.1`)",
+            "traefik.http.routers.traefik-dashboard-localhost.rule": "Host(`localhost`) || Host(`127.0.0.1`)",
             "traefik.http.routers.traefik-dashboard-localhost.service": "api@internal",
             "ddb.emit.certs:generate[localhost]": "localhost",
             "ddb.emit.certs:generate[127.0.0.1]": "127.0.0.1",
             "traefik.http.routers.traefik-dashboard-tls.rule": "Host(`" + domain + "`)",
             "traefik.http.routers.traefik-dashboard-tls.service": "api@internal",
             "traefik.http.routers.traefik-dashboard-tls.tls": true,
-            "traefik.http.routers.traefik-dashboard-tls-localhost.rule": "Host(`localhost`, `127.0.0.1`)",
+            "traefik.http.routers.traefik-dashboard-tls-localhost.rule": "Host(`localhost`) || Host(`127.0.0.1`)",
             "traefik.http.routers.traefik-dashboard-tls-localhost.service" :"api@internal",
             "traefik.http.routers.traefik-dashboard-tls-localhost.tls": "true"
          } + ddb.TraefikCertLabels(domain, "traefik-dashboard"),
