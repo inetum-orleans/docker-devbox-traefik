@@ -33,7 +33,7 @@ ddb.Compose() {
             "traefik.http.routers.traefik-dashboard-tls-localhost.rule": "Host(`localhost`, `127.0.0.1`)",
             "traefik.http.routers.traefik-dashboard-tls-localhost.service" :"api@internal",
             "traefik.http.routers.traefik-dashboard-tls-localhost.tls": "true"
-         } + ddb.TraefikCertLabels(domain, "traefik-dashboard-tls"),
+         } + ddb.TraefikCertLabels(domain, "traefik-dashboard"),
          volumes+: [
             "/var/run/docker.sock:/var/run/docker.sock",
             ddb.path.project + "/.docker/.ca-certificates:/ca-certs",
