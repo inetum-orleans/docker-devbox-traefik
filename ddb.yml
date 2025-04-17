@@ -1,5 +1,7 @@
 smartcd:
   disabled: true
+traefik_dashboard:
+    enabled: true
 jsonnet:
   docker:
     expose:
